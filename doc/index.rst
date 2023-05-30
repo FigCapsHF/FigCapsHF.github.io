@@ -1,17 +1,19 @@
-.. this is a comment, it is not rendered
-   when adding new *.rst files, reference them here
-   in this index.rst for them to be rendered and added to the
-   table of contents
+.. Figure-Captioning with Human Feedback (FigCapsHF) documentation master file, created by
+   sphinx-quickstart on Fri May 19 11:03:29 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
+Welcome to the documentation for Figure-Captioning with Human Feedback benchmark dataset!
+===================================================================================================================
 
-Basics
-==========
+Our `paper <https://github.com/rayt98/RLHF>`_ provides a robust benchmark dataset for facilitating the study and application of Reinforcement Learning with Human Feedback (RLHF) 
+in the domain of scientific figures generation. The accompanying github repo can be found `here <https://github.com/rayt98/RLHF>`_ . 
 
+Contents
+===================================================================================================================
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   purpose.rst
-   dependencies.rst
-   usage.rst
-   credit.rst
-   exercises.rst
+   GettingStarted
+   ExampleUsage
+   api_doc
