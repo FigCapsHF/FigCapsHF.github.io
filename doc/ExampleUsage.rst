@@ -12,22 +12,29 @@ First, we download the dataset and dependencies, and clone our `repo <https://gi
 .. code-block:: 
 
    pip install --upgrade pip
-   git clone https://github.com/rayt98/RLHF.git
-   pip install -r requirements.txt
+   git clone https://github.com/TODO/RLHF.git
    cd RLHF
+   pip install -r requirements.txt
    wget https://figshare.com/ndownloader/files/40317607 -O dataset.zip
    unzip dataset.zip
-   mv "metadata.jsonl" "benchmark/No-Subfig-Img/train"
+   ./cp.sh
 
-Second, we can train the model using HuggingFace 
-
-.. code-block::
-
-   python train.py
-
-Third, we can perform inference to generate a caption for a scientific figure
+Here we are using BLIP as a sample model for training using Pytorch's native DataLoader library combined with Huggingface's dataset class. User can provide arguments for their desired functionality as shown in the script below. To change the the number of epochs and learning rate, modify config variable in train_blip.py.
 
 .. code-block::
+
+   python train_blip.py --f16 --output_dir output
    
-   python inference.py PATH/TO/YOUR/sample.png
+   
+（after downloading and setting up the dataset) To predict a scientific caption from an scientific image
+.. code-block::
+   ./pred.sh
+   cd BLIP
+
+Use this link to download our pre-trained model, and place it under directory BLIP, and use the following script to do an inference on the sample.png
+
+.. code-block::   
+   python inference.py sample.png
+   
+If running on a CPU, the expected inference result on the sample.png is [the results of comparing oa and noa in terms of mean of error.] (on seed 42)
 
