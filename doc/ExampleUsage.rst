@@ -12,7 +12,7 @@ First, we download the dataset and dependencies, and clone our `repo <https://gi
 .. code-block:: 
 
    pip install --upgrade pip
-   git clone https://github.com/TODO/RLHF.git
+   git clone https://github.com/FigCapsHF/FigCaps.git
    cd RLHF
    pip install -r requirements.txt
    wget https://figshare.com/ndownloader/files/40317607 -O dataset.zip
