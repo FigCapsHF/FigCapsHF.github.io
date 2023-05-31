@@ -5,7 +5,7 @@
 
 Example Usage
 ===================================================================================================================
-This is an example of fine-tuning a ViT+GPT2 model for Figure-Captioning, using HuggingFace, on our RLHF dataset.
+This is an example of fine-tuning a BLIP model for Figure-Captioning, using HuggingFace's Dataset Class, on our RLHF dataset.
 
 First, we download the dataset and dependencies, and clone our `repo <https://github.com/rayt98/RLHF>`_ for helper functions
 
