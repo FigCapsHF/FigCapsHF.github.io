@@ -31,7 +31,7 @@ Here we are using BLIP as a sample model for training using Pytorch's native Dat
    ./pred.sh
    cd BLIP
 
-Use this link to download our pre-trained model, and place it under directory BLIP, and use the following script to do an inference on the sample.png
+Use this `link <https://drive.google.com/file/d/1FZh95Xeyt3RlaYs_TeeiiSPwYvAuGogQ/view?usp=share_link>`_ to download our pre-trained model, and place it under directory BLIP, and use the following script to do an inference on the sample.png
 
 .. code-block::   
    python inference.py sample.png
