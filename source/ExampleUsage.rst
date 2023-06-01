@@ -26,15 +26,15 @@ Here we are using BLIP as a sample model for training using Pytorch's native Dat
    python train_blip.py --f16 --output_dir output
    
    
-（after downloading and setting up the dataset) To predict a scientific caption from an scientific image
+(after downloading and setting up the dataset) To predict a scientific caption from an scientific image
 .. code-block::
+
    ./pred.sh
    cd BLIP
 
 Use this `link <https://drive.google.com/file/d/1FZh95Xeyt3RlaYs_TeeiiSPwYvAuGogQ/view?usp=share_link>`_ to download our pre-trained model, and place it under directory BLIP, and use the following script to do an inference on the sample.png
 
-.. code-block::   
+.. code-block::  
+    
    python inference.py sample.png
    
-If running on a CPU, the expected inference result on the sample.png is [the results of comparing oa and noa in terms of mean of error.] (on seed 42)
-
