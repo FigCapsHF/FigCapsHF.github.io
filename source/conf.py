@@ -38,10 +38,6 @@ project = 'Figure-Captioning with Human Feedback (FigCapsHF)'
 copyright = '2023, Anonymous'
 author = 'Anonymous'
 
-latex_elements = {
-    
-}
-
 extensions = ['sphinx.ext.autodoc']
 
 templates_path = ['_templates']

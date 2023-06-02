@@ -12,9 +12,15 @@
 
 class FigCapsHF():
     """
-    Constructor for the FigCapsHF object
+    Main class for FigCapsHF
     """
+  
     def __init__(self, benchmark_path) -> None:
+        """
+        Constructor for the FigCapsHF object
+        :params benchmark_path: path of the dataset
+        :type benchmark_path: String
+        """
         self.benchmark_path = benchmark_path
     
     
@@ -126,7 +132,7 @@ class FigCapsHF():
 
         :param image_paths: paths to the figure image
         :type image_paths: List
-        :param captions_list(List): list of captions for the corresponding figure images
+        :param captions_list: list of captions for the corresponding figure images
         :type captions_list: List
         :param model_name: Name of the Model to generate embeddings for the figure caption pair. Choose from ['BLIP','BERT','SciBERT','MCSE']
         :type model_name: String
@@ -188,15 +194,6 @@ class FigCapsHF():
         scoring_model = MLPRegressor(random_state = 1, max_iter = 500).fit(hf_embeddings,scores)
         return scoring_model
         
-    #Using the trained scoring model, predicts the (inferred) human feedback scores for unseen figure-caption pairs
-    #Input:
-    #embeddings(numpy array): (N*D) numpy array containing the embeddings of the figure-caption pairs for which human feedback needs to be inferred
-    #scoring_model(scikit-learn MLP Regressor): model which has been trained to predict human feedback scores given a figure-caption pair embedding
-    #quantization_levels(natural number, default is 2): calculates different percentiles of the inferred scores and quantizes the scores into the selected number of levels/bins. Higher quantized score corresponds to a higher score.
-    #Output:
-    #tuple containing (inferred_scores, quantized_scores):
-    #inferred_scores(numpy array): (N,) numpy array with the predicted scores of figure-caption pairs using the supplied model
-    #quantized_scores(numpy array): (N,) numpy array with the quantized scores (calculated using the inferred scores)
     def infer_hf(self, embeddings, scoring_model, quantization_levels = 2):
         """
         Using the trained scoring model, predicts the (inferred) human feedback scores for unseen figure-caption pairs
@@ -223,28 +220,20 @@ class FigCapsHF():
         quantized_scores = np.digitize(inferred_scores,np.percentile(inferred_scores, np.linspace(0,100,quantization_levels+1,endpoint = True)[1:-1]))
         return (inferred_scores, quantized_scores)
     
-    #Generate embeddings from a specified model for the ~400 figure-caption pairs in the human-annotated dataset
-    #Input:
-    #hf_score_type(string): the human-feedback score to be used from the human-annotated dataset. Select between ['helpfulness','ocr','visual','takeaway']
-    #model_name(string): Name of the Model to generate embeddings for the figure caption pair. Choose from ['BLIP','BERT','SciBERT','MCSE']
-    #Note: for MCSE (flickr-mcse-roberta-base) , download the 'flickr-mcse-robert-base' model from 'https://github.com/uds-lsv/MCSE' 
-    #MCSE_path(string): If MCSE is selected, supply path to the folder containing model weights 
-    #Output:
-    #tuple containing(hf_ds_embeddings,scores) 
-    #hf_ds_embeddings(numpy array): (N*D) numpy array containing embeddings for figure-caption pairs in the human annotated dataset. Note: pairs with an empty specified human-feedback score are removed
-    #scores(numpy array): (N,) numpy array containing the specified human-feedback scores (corresponding to the embeddings)
     def generate_embeddings_hf_anno(self,hf_score_type, model_name, MCSE_path=None):
         """
         Generate embeddings from a specified model for the ~400 figure-caption pairs in the human-annotated dataset
+
         :param hf_score_type: the human-feedback score to be used from the human-annotated dataset. Select between ['helpfulness','ocr','visual','takeaway']
         :type hf_score_type: String
         :param model_name: Name of the Model to generate embeddings for the figure caption pair. Choose from ['BLIP','BERT','SciBERT','MCSE']
         :type model_name: String    
-        :param MCSE_path(string): If MCSE is selected, supply path to the folder containing model weights 
+        :param MCSE_path: If MCSE is selected, supply path to the folder containing model weights 
         :type MCSE_path: String
 
         :return:
-            hf_ds_embeddings: (N*D) numpy array containing embeddings for figure-caption pairs in the human annotated dataset. Note: pairs with an empty specified human-feedback score are remove
+            hf_ds_embeddings: (N*D) numpy array containing embeddings for figure-caption pairs in the human annotated dataset. Note: pairs with an empty specified human-feedback score are removed.
+
             scores: (N,) numpy array containing the specified human-feedback scores (corresponding to the embeddings)
         :rtype: Numpy Array, Numpy Array
 
@@ -289,11 +278,12 @@ class FigCapsHF():
     def generate_embeddings_ds_split(self, model_name, MCSE_path=None, split_name = "train", max_num_samples = None):
 
         """
-        Generate embeddings from a specified model for the figure-caption pairs in the larger dataset 
+        Generate embeddings from a specified model for the figure-caption pairs in the larger dataset.
+
         :param model_name: Name of the Model to generate embeddings for the figure caption pair. Choose from ['BLIP','BERT','SciBERT','MCSE']
         :type model_name: String
         :param split_name: data split to generate embeddings from. Choose from ['train','test','val']
-        :type String, default = 'train'
+        :type split_name: String, default = 'train'
         :param max_num_samples: maximum number of samples from the specified split to generate embeddings for(picks the first N) 
         :type max_num_samples: natural number, default = all pairs in the specified split
         :param MCSE_path: If MCSE is selected, supply path to the folder containing model weights 
@@ -301,8 +291,11 @@ class FigCapsHF():
 
         :return:
             ds_split_embeddings: (N*D) numpy array containing embeddings for figure-caption pairs in the specified data split
+
             image_names: list containing the paths of the figure-images
+
             captions: list containing the captions corresponding to the figure-images
+            
         :rtype: Numpy Array, List, List
 
         Note: for MCSE (flickr-mcse-roberta-base) , download the 'flickr-mcse-robert-base' model from 'https://github.com/uds-lsv/MCSE'
