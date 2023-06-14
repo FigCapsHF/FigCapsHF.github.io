@@ -6,7 +6,7 @@
 Retrieving the dataset
 ===================================================================================================================
 
-The benchmark dataset can be downloaded from `here <https://figshare.com/ndownloader/files/41222934>`_ manually or by running the following commands
+The benchmark dataset can be downloaded from `here <https://figshare.com/ndownloader/files/41222934>`_ (8.34 GB) manually or by running the following commands
 
 .. code-block:: 
 
@@ -18,20 +18,26 @@ The directory structure is
 
 .. code-block:: 
 
-  benchmark
-  ├── arxiv-metadata-oai-snapshot.json
-  ├── human-feedback.csv 
-  ├── Caption-All
-  │   ├── test
-  │   ├── train
-  │   └── val
-  ├── List-of-Files-for-Each-Experiment
-  │   ├── Caption-No-More-Than-100-Tokens
-  │   ├── First-Sentence
-  │   └── Single-Sentence-Caption
-  ├── No-Subfig-Img
-  │   ├── test
-  │   ├── train
-  │   └── val       
-  ├── README.md  
+   ├── No-Subfig-Img                       #contains figure-image files for each split of the dataset
+   │	├── Train
+   │	├── Val
+   │	└── Test
+   ├── Caption-All                         #contains corresponding figure-captions and (precomputed) inferred human-feedback metadata
+   │	├── Train
+   │	├── Val
+   │	└── Test
+   ├── human-feedback.csv                  #contains human evaluations of a subset of figure image-caption pairs
+   ├── arxiv-metadata-oai-snapshot.json    #arXiv paper metadata (from arXiv dataset) 
+   └── List-of-Files-for-Each-Experiments  #list of figure names used in each experiment 
+      ├── Single-Sentence-Caption
+      │   ├── No-Subfig
+      │   │   ├── Train
+      │	│   ├── Val
+      │	│   └── Test
+      │	└── Yes-Subfig
+      │       ├── Train
+      │       ├── Val
+      │       └── Test
+      ├── First-Sentence                  #Same as in Single-Sentence-Caption
+      └── Caption-No-More-Than-100-Tokens #Same as in Single-Sentence-Caption
 

@@ -11,6 +11,10 @@ Our framework comprises of 1) an automatic method for evaluating quality of figu
 
 We release a large-scale benchmark dataset with human feedback on figure-caption pairs to enable further evaluation and development of RLHF techniques for this problem.
 
+The benchmark dataset can be found `here <https://figshare.com/s/c034fd77bea9475319cb>`_ (8.34 GB)
+
+Code for the framework can be found `here <https://github.com/FigCapsHF/FigCapsHF>`_
+
 Contents
 ===================================================================================================================
 .. toctree::
