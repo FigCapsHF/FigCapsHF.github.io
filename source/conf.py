@@ -34,7 +34,7 @@ sys.path.insert(0, os.path.abspath('.'))
 #     ]
 # }
 
-project = 'Figure-Captioning with Human Feedback (FigCapsHF)'
+project = 'Figure-Captioning with Human Feedback (FigCaps-HF)'
 copyright = '2023, Anonymous'
 author = 'Anonymous'
 

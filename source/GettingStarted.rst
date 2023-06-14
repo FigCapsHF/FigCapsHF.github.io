@@ -6,13 +6,12 @@
 Retrieving the dataset
 ===================================================================================================================
 
-To download and unzip the dataset, you can either do it manually through the `download link <https://figshare.com/ndownloader/files/40317607>`_
-or by running the following commands
+The benchmark dataset can be downloaded from `here <https://figshare.com/ndownloader/files/41222934>`_ manually or by running the following commands
 
 .. code-block:: 
 
-   wget https://figshare.com/ndownloader/files/40317607 -O dataset.zip
-   unzip dataset.zip
+   wget  https://figshare.com/ndownloader/files/41222934 -O benchmark.zip
+   unzip benchmark.zip
 
 
 The directory structure is 
